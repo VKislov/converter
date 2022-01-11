@@ -1,0 +1,12 @@
+.content {
+  padding: 10px;
+  padding-bottom: 20px;
+}
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+}
+.box {
+  align-items: center;
+}

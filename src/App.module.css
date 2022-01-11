@@ -1,0 +1,36 @@
+.App {
+  min-height: 100%;
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 3fr;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+}
+.header {
+  grid-area: "header";
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+}
+.content {
+  grid-area: "content";
+}
+.footer {
+  position: relative;
+  width: 100%;
+  grid-area: "footer";
+  height: 100px;
+  bottom: 0;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
