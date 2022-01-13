@@ -23,9 +23,9 @@ const fileUploaderReducer = (state = initialState, action) => {
       fileData.append("ImageFile", stateCopy.imageFile);
       fileData.append("ExtensionTo", stateCopy.extensionTo);
       stateCopy.fileData = fileData;
-      stateCopy.convertedFile = fileUploaderAPI.sendImageToServer(
-        stateCopy.fileData
-      );
+      fileUploaderAPI.sendImageToServer(stateCopy.fileData);
+      stateCopy.convertedFile = "cock";
+
       return stateCopy;
     }
     case ON_EXTENSION_CHANGE: {

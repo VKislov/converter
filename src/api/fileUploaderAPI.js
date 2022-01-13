@@ -8,7 +8,7 @@ export const fileUploaderAPI = {
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       }).then((response) => {
-        return response.data.blob();
+        return response.data;
       });
     } catch (error) {
       console.log(error);

@@ -1,4 +1,5 @@
 import React from "react";
+import { ExtensionChangerContainer } from "../ExtensionChanger/ExtensionChangerContainer";
 import style from "./Content.module.css";
 import { FileUploaderContainer } from "./FileSelectorArea/FileUploaderContainer";
 import { PreviewerImageContainer } from "./PreviewerImage/PreviewerImageContainer";
@@ -21,6 +22,9 @@ export class Content extends React.Component {
             />
             <PreviewerImageContainer />
           </div>
+          <div>
+            <ExtensionChangerContainer />
+          </div>
         </div>
       );
     } else {
@@ -31,6 +35,9 @@ export class Content extends React.Component {
               togglePreviewer={this.togglePreviewer}
               imageIsGet={this.imageIsGet}
             />
+          </div>
+          <div>
+            <ExtensionChangerContainer />
           </div>
         </div>
       );
