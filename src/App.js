@@ -1,5 +1,5 @@
 import style from "./App.module.css";
-import { Content } from "./component/content/Content";
+import { ContentContainer } from "./component/content/ContentContainer";
 import { Footer } from "./component/Footer/Footer";
 import { Header } from "./component/Header/Header";
 
@@ -10,7 +10,7 @@ function App() {
         <Header />
       </div>
       <div className={style.content}>
-        <Content />
+        <ContentContainer />
       </div>
       <div className={style.footer}>
         <Footer />

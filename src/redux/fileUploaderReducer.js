@@ -5,9 +5,10 @@ const ON_FILE_UPLOAD = "ON-FILE-UPLOAD";
 const ON_EXTENSION_CHANGE = "ON-EXTENSION-CHANGE";
 let initialState = {
   imageFile: null,
-  fileData: null,
+  // fileData: null,
   convertedFile: null,
   extensionTo: null,
+  urlConvertedFile: null,
 };
 
 const fileUploaderReducer = (state = initialState, action) => {
@@ -22,9 +23,17 @@ const fileUploaderReducer = (state = initialState, action) => {
       let fileData = new FormData();
       fileData.append("ImageFile", stateCopy.imageFile);
       fileData.append("ExtensionTo", stateCopy.extensionTo);
-      stateCopy.fileData = fileData;
-      fileUploaderAPI.sendImageToServer(stateCopy.fileData);
-      stateCopy.convertedFile = "cock";
+      //stateCopy.fileData = fileData; скорее всего избыточно. И так будет работать
+      fileUploaderAPI
+        .sendImageToServer(fileData)
+        .then((response) => {
+          stateCopy.convertedFile = response.data;
+        })
+        .then(() => {
+          stateCopy.urlConvertedFile = URL.createObjectURL(
+            stateCopy.convertedFile
+          );
+        });
 
       return stateCopy;
     }

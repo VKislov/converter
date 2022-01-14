@@ -8,7 +8,7 @@ import { FileUploader } from "./FileUploader";
 const mapStateToProps = (state, ownProps) => {
   return {
     togglePreviewer: ownProps.togglePreviewer,
-    imageIsGet: ownProps.imageIsGet,
+    setImageIsGet: ownProps.setImageIsGet,
   };
 };
 const mapDispatchToProps = (dispatch) => ({

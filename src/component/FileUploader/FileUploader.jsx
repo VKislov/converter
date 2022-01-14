@@ -1,25 +1,18 @@
 import React from "react";
 
 export class FileUploader extends React.Component {
-  state = {};
+  state = { imageIsGet: false };
   onFileChange = (event) => {
     this.props.onFileChange(event.target.files[0]);
-    this.props.imageIsGet();
+    this.props.setImageIsGet();
+    this.setState({ imageIsGet: true });
   };
   onFileUpload = () => {
     this.props.onFileUpload();
   };
   preview = () => {
-    this.props.togglePreviewer();
-  };
-  fileData = () => {
-    if (this.state.selectedFile) {
-      return (
-        <div>
-          <br />
-          <h4>Choose before Pressing the Upload button</h4>
-        </div>
-      );
+    if (this.state.imageIsGet) {
+      this.props.togglePreviewer();
     }
   };
   render() {

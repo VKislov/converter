@@ -1,7 +1,9 @@
 import { connect } from "react-redux";
 import { onExtensionChangeAC } from "../../redux/fileUploaderReducer";
 import { ExtensionChanger } from "./ExtensionChanger";
-const mapStateToProps = (state) => {};
+const mapStateToProps = (state) => {
+  return {};
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     onExtensionChange: (ext) => dispatch(onExtensionChangeAC(ext)),
