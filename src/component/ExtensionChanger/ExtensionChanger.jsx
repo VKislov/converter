@@ -25,7 +25,6 @@ export class ExtensionChanger extends React.Component {
           width: 100%;
   border-radius: 5px;
   outline: solid tan;
-  margin: 10px;
   text-align:left;
         }
       `}
