@@ -9,6 +9,7 @@ let initialState = {
   convertedFile: null,
   extensionTo: null,
   urlConvertedFile: null,
+  extensions: ["png", "jpeg", "bpm"],
 };
 
 const fileUploaderReducer = (state = initialState, action) => {
@@ -23,18 +24,9 @@ const fileUploaderReducer = (state = initialState, action) => {
       let fileData = new FormData();
       fileData.append("ImageFile", stateCopy.imageFile);
       fileData.append("ExtensionTo", stateCopy.extensionTo);
-      //stateCopy.fileData = fileData; скорее всего избыточно. И так будет работать
-      fileUploaderAPI
-        .sendImageToServer(fileData)
-        .then((response) => {
-          stateCopy.convertedFile = response.data;
-        })
-        .then(() => {
-          stateCopy.urlConvertedFile = URL.createObjectURL(
-            stateCopy.convertedFile
-          );
-        });
-
+      fileUploaderAPI.sendImageToServer(fileData).then((response) => {
+        stateCopy.convertedFile = URL.createObjectURL(response.data);
+      });
       return stateCopy;
     }
     case ON_EXTENSION_CHANGE: {

@@ -19,10 +19,8 @@
   grid-area: "content";
 }
 .footer {
-  position: relative;
   width: 100%;
   grid-area: "footer";
-  height: 100px;
   bottom: 0;
 }
 

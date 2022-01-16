@@ -32,10 +32,10 @@ export class Content extends React.Component {
     }
   };
   downloadImage = () => {
-    if (!(this.props.urlConvertedFile === null)) {
+    if (this.props.convertedFile) {
       return (
-        <a href={this.props.urlConvertedFile} download>
-          download
+        <a href={this.props.convertedFile} download>
+          <button>download</button>
         </a>
       );
     }

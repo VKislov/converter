@@ -1,0 +1,18 @@
+.btn-width {
+  width: fit-content;
+  height: 50%;
+}
+.ExtensionChangerArea {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas: "extensionToText selectorExt";
+  padding: 10px;
+}
+.extensionToText {
+  grid-area: "extensionToText";
+  font-size: 20px;
+  align-self: center;
+}
+.selectorExt {
+  grid-area: "selectorExt";
+}

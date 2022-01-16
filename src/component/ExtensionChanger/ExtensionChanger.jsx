@@ -1,29 +1,56 @@
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import React from "react";
+import { Button, Collapse, ListGroup } from "react-bootstrap";
+import { ItemListGroup } from "../ItemListGroup/ItemListGroup";
+import style from "./ExtensionChanger.module.css";
+export class ExtensionChanger extends React.Component {
+  state = { extInSelector: "Select extension" };
+  onExtensionChange = (ext) => {
+    this.setState({ extInSelector: ext, openCollapse: false });
+  };
+  mapExtensionsFromProps = () => {
+    return this.props.extensions.map((ext) => (
+      <ItemListGroup
+        extension={ext}
+        onExtensionChange={this.onExtensionChange}
+      />
+    ));
+  };
+  render() {
+    return (
+      <div className={style.ExtensionChangerArea}>
+        {
+          <style type="text/css">
+            {`
+        .btn-width {
+          width: 100%;
+  border-radius: 5px;
+  outline: solid tan;
+  margin: 10px;
+  text-align:left;
+        }
+      `}
+          </style>
+        }
+        <div className={style.extensionToText}>Extension to: </div>
 
-export const ExtensionChanger = (props) => {
-  const onExtensionChangePng = () => {
-    props.onExtensionChange("png");
-  };
-  const onExtensionChangeJpg = () => {
-    props.onExtensionChange("jpg");
-  };
-  const onExtensionChangeBmp = () => {
-    props.onExtensionChange("bmp");
-  };
-  return (
-    <div>
-      <DropdownButton id="dropdown-item-button" title="Extension to">
-        <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
-        <Dropdown.Item as="button" onClick={onExtensionChangePng}>
-          png
-        </Dropdown.Item>
-        <Dropdown.Item as="button" onClick={onExtensionChangeJpg}>
-          jpg
-        </Dropdown.Item>
-        <Dropdown.Item as="button" onClick={onExtensionChangeBmp}>
-          svg
-        </Dropdown.Item>
-      </DropdownButton>
-    </div>
-  );
-};
+        <div className={style.selectorExt}>
+          <Button
+            variant="width"
+            onClick={() =>
+              this.setState({ openCollapse: !this.state.openCollapse })
+            }
+            aria-controls="example-collapse-text"
+            aria-expanded={this.state.openCollapse}
+          >
+            {this.state.extInSelector}
+          </Button>
+          <Collapse in={this.state.openCollapse}>
+            <div id="example-collapse-text">
+              <ListGroup as="ul">{this.mapExtensionsFromProps()}</ListGroup>
+            </div>
+          </Collapse>
+        </div>
+      </div>
+    );
+  }
+}
