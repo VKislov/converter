@@ -3,7 +3,7 @@ import { ContentContainer } from "./component/content/ContentContainer";
 import { Footer } from "./component/Footer/Footer";
 import { Header } from "./component/Header/Header";
 
-function App() {
+function App(props) {
   return (
     <div className={style.App}>
       <div className={style.header}>

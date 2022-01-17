@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import {
   onFileChangeAC,
-  onFileUploadAC,
+  sendImageToServerTC,
 } from "../../redux/fileUploaderReducer";
 import { FileUploader } from "./FileUploader";
 
@@ -9,11 +9,15 @@ const mapStateToProps = (state, ownProps) => {
   return {
     togglePreviewer: ownProps.togglePreviewer,
     setImageIsGet: ownProps.setImageIsGet,
+    imageFile: state.fileUploaderReducer.imageFile,
+    extensionTo: state.fileUploaderReducer.extensionTo,
   };
 };
 const mapDispatchToProps = (dispatch) => ({
   onFileChange: (userFile) => dispatch(onFileChangeAC(userFile)),
-  onFileUpload: () => dispatch(onFileUploadAC()),
+  sendImageToServerTC: (imageFile, extensionTo) => {
+    dispatch(sendImageToServerTC(imageFile, extensionTo));
+  },
 });
 
 const FileUploaderContainer = connect(

@@ -2,7 +2,7 @@ import React from "react";
 import { ListGroup } from "react-bootstrap";
 
 export class ItemListGroup extends React.Component {
-  cock = () => {
+  onExtensionChange = () => {
     this.props.onExtensionChange(this.props.extension);
   };
   render() {
@@ -19,7 +19,11 @@ export class ItemListGroup extends React.Component {
             `}
         </style>
 
-        <ListGroup.Item as="li" onClick={this.cock} className="item">
+        <ListGroup.Item
+          as="li"
+          onClick={this.onExtensionChange}
+          className="item"
+        >
           {this.props.extension}
         </ListGroup.Item>
       </div>

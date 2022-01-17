@@ -1,7 +1,7 @@
 import axios from "axios";
 export const fileUploaderAPI = {
-  sendImageToServer: (formData) => {
-    return axios({
+  sendImageToServer: async (formData) => {
+    return await axios({
       method: "post",
       url: "http://94.137.242.252:7777/ImageConverter",
       data: formData,

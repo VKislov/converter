@@ -8,7 +8,10 @@ export class FileUploader extends React.Component {
     this.setState({ imageIsGet: true });
   };
   onFileUpload = () => {
-    this.props.onFileUpload();
+    this.props.sendImageToServerTC(
+      this.props.imageFile,
+      this.props.extensionTo
+    );
   };
   preview = () => {
     if (this.state.imageIsGet) {
