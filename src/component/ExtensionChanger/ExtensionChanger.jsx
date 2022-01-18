@@ -6,6 +6,7 @@ export class ExtensionChanger extends React.Component {
   componentDidMount() {
     this.props.loadExt();
   }
+
   state = { extInSelector: "Select extension" };
   onExtensionChange = (ext) => {
     this.setState({ extInSelector: ext, openCollapse: false });
@@ -13,7 +14,7 @@ export class ExtensionChanger extends React.Component {
   };
 
   mapExtensionsFromProps = () => {
-    if (!this.props.extensionsFromServer === null) {
+    if (this.props.extensionsFromServer !== null) {
       return this.props.extensionsFromServer.map((ext) => (
         <ItemListGroup
           extension={ext}
