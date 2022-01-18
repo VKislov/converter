@@ -13,7 +13,12 @@ export class Content extends React.Component {
   };
   showPreviewer = () => {
     if (this.state.showPreviewer) {
-      return <PreviewerImageContainer />;
+      return (
+        <PreviewerImageContainer
+          togglePreviewer={this.togglePreviewer}
+          showPreviewer={this.state.showPreviewer}
+        />
+      );
     }
   };
   imageIsGet = () => {
@@ -48,6 +53,7 @@ export class Content extends React.Component {
           <FileUploaderContainer
             togglePreviewer={this.togglePreviewer}
             setImageIsGet={this.setImageIsGet}
+            imageIsGet={this.state.imageIsGet}
           />
           {this.showPreviewer()}
           {this.imageIsGet()}

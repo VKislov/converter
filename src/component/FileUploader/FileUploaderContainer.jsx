@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     togglePreviewer: ownProps.togglePreviewer,
     setImageIsGet: ownProps.setImageIsGet,
+    imageIsGet: ownProps.imageIsGet,
     imageFile: state.fileUploaderReducer.imageFile,
     extensionTo: state.fileUploaderReducer.extensionTo,
   };

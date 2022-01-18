@@ -1,11 +1,10 @@
 import React from "react";
 
 export class FileUploader extends React.Component {
-  state = { imageIsGet: false };
+  state = {};
   onFileChange = (event) => {
     this.props.onFileChange(event.target.files[0]);
     this.props.setImageIsGet();
-    this.setState({ imageIsGet: true });
   };
   onFileUpload = () => {
     this.props.sendImageToServerTC(
@@ -14,7 +13,7 @@ export class FileUploader extends React.Component {
     );
   };
   preview = () => {
-    if (this.state.imageIsGet) {
+    if (this.props.imageIsGet) {
       this.props.togglePreviewer();
     }
   };
