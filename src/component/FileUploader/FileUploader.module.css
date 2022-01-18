@@ -1,0 +1,14 @@
+.withBox {
+  outline: solid dodgerblue;
+  border-radius: 8px;
+  text-align: start;
+  margin: 15px;
+}
+.Button {
+  background-color: dodgerblue;
+  width: 100%;
+}
+.ButtonWrapper {
+  text-align: left;
+  margin: 20px;
+}

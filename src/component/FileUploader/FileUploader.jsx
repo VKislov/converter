@@ -1,5 +1,6 @@
 import React from "react";
-
+import { Button } from "react-bootstrap";
+import style from "./FileUploader.module.css";
 export class FileUploader extends React.Component {
   state = {};
   onFileChange = (event) => {
@@ -20,9 +21,19 @@ export class FileUploader extends React.Component {
   render() {
     return (
       <div>
-        <input type="file" onChange={this.onFileChange} />
-        <button onClick={this.onFileUpload}>Upload!</button>
-        <button onClick={this.preview}>Preview</button>
+        <div className={style.withBox}>
+          <input type="file" onChange={this.onFileChange} />
+        </div>
+        <div className={style.ButtonWrapper}>
+          <Button onClick={this.onFileUpload} className={style.Button}>
+            Upload!
+          </Button>
+        </div>
+        <div className={style.ButtonWrapper}>
+          <Button onClick={this.preview} className={style.Button}>
+            Preview
+          </Button>
+        </div>
       </div>
     );
   }

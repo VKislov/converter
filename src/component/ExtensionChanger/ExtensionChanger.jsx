@@ -3,6 +3,9 @@ import { Button, Collapse, ListGroup } from "react-bootstrap";
 import { ItemListGroup } from "../ItemListGroup/ItemListGroup";
 import style from "./ExtensionChanger.module.css";
 export class ExtensionChanger extends React.Component {
+  componentDidMount() {
+    this.props.loadExt();
+  }
   state = { extInSelector: "Select extension" };
   onExtensionChange = (ext) => {
     this.setState({ extInSelector: ext, openCollapse: false });
@@ -10,9 +13,7 @@ export class ExtensionChanger extends React.Component {
   };
 
   mapExtensionsFromProps = () => {
-    if (this.props.extensionsFromServer === null) {
-      this.props.loadExt();
-    } else {
+    if (!this.props.extensionsFromServer === null) {
       return this.props.extensionsFromServer.map((ext) => (
         <ItemListGroup
           extension={ext}

@@ -10,8 +10,6 @@
 .box {
   align-items: center;
   width: 100%;
-  height: 500px;
-  outline: solid black;
-  border-radius: 50px;
   padding: 30px;
+  background-color: white;
 }

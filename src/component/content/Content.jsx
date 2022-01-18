@@ -28,7 +28,7 @@ export class Content extends React.Component {
           Choose before Pressing the Upload button
         </h4>
       );
-    } else if (this.state.imageIsGet && !this.state.showPreviewer) {
+    } else {
       return (
         <h4 style={{ margin: "50px" }}>
           Then you can pressing the upload and preview button
@@ -55,9 +55,11 @@ export class Content extends React.Component {
             setImageIsGet={this.setImageIsGet}
             imageIsGet={this.state.imageIsGet}
           />
+
           {this.showPreviewer()}
-          {this.imageIsGet()}
           {this.downloadImage()}
+
+          {this.imageIsGet()}
         </div>
         <div style={{ margin: "10px" }}>
           <ExtensionChangerContainer />
