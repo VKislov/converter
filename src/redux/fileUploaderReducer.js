@@ -1,4 +1,3 @@
-import axios from "axios";
 import { fileUploaderAPI } from "../api/fileUploaderAPI";
 import { initialAPI } from "../api/initialAPI";
 
