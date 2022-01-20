@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Collapse, ListGroup } from "react-bootstrap";
-import { ItemListGroup } from "../ItemListGroup/ItemListGroup";
 import style from "./ExtensionChanger.module.css";
+import { ItemListGroup } from "./ItemListGroup/ItemListGroup";
 export class ExtensionChanger extends React.Component {
   componentDidMount() {
     this.props.loadExt();

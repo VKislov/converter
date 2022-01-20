@@ -1,5 +1,5 @@
 import style from "./App.module.css";
-import { ContentContainer } from "./component/content/ContentContainer";
+import { ConverterContainer } from "./component/Converter/ConverterContainer";
 import { Footer } from "./component/Footer/Footer";
 import { Header } from "./component/Header/Header";
 
@@ -9,8 +9,8 @@ function App(props) {
       <div className={style.header}>
         <Header />
       </div>
-      <div className={style.content}>
-        <ContentContainer />
+      <div className={style.converter}>
+        <ConverterContainer />
       </div>
       <div className={style.footer}>
         <Footer />

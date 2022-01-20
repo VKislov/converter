@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
-import { Content } from "./Content";
+import { Converter } from "./Converter";
 const mapStateToProps = (state) => {
   return { convertedFile: state.fileUploaderReducer.URLconvertedFile };
 };
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
-export const ContentContainer = connect(
+export const ConverterContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Content);
+)(Converter);

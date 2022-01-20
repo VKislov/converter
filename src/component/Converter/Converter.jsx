@@ -1,9 +1,9 @@
 import React from "react";
-import { ExtensionChangerContainer } from "../ExtensionChanger/ExtensionChangerContainer";
-import { FileUploaderContainer } from "../FileUploader/FileUploaderContainer";
-import { PreviewerImageContainer } from "../PreviewerImage/PreviewerImageContainer";
-import style from "./Content.module.css";
-export class Content extends React.Component {
+import style from "./Converter.module.css";
+import { ExtensionChangerContainer } from "./ExtensionChanger/ExtensionChangerContainer";
+import { FileUploaderContainer } from "./FileUploader/FileUploaderContainer";
+import { PreviewerImageContainer } from "./PreviewerImage/PreviewerImageContainer";
+export class Converter extends React.Component {
   state = { showPreviewer: false, imageIsGet: false };
   togglePreviewer = () => {
     this.setState({ showPreviewer: !this.state.showPreviewer });
