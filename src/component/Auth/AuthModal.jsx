@@ -8,16 +8,17 @@ import {
   ModalTitle,
 } from "react-bootstrap";
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
+import { Field, Form } from "react-final-form";
 
 export const AuthModal = (props) => {
-  const [email, setEmail] = useState(null);
-  const onEmailChange = (e) => {
-    setEmail(e.currentTarget.value);
-  };
-  const [password, setPassword] = useState(null);
-  const onPasswordChange = (e) => {
-    setPassword(e.currentTarget.value);
-  };
+  // const [email, setEmail] = useState(null);
+  // const onEmailChange = (e) => {
+  //   setEmail(e.currentTarget.value);
+  // };
+  // const [password, setPassword] = useState(null);
+  // const onPasswordChange = (e) => {
+  //   setPassword(e.currentTarget.value);
+  // };
   const [isAuthModalShow, setAuthModalShow] = useState(true);
   const [passwordInputType, setPasswordInputType] = useState("password");
   const switchTypeOfInputPasswordField = () => {
@@ -46,6 +47,12 @@ export const AuthModal = (props) => {
       );
     }
   };
+  const [disableButtonThenSubmit, setDisableButtonThenSubmit] = useState(false);
+  const onSubmit = async (e) => {
+    setDisableButtonThenSubmit(true);
+    await props.logIn(e.email, e.password);
+    setDisableButtonThenSubmit(false); // хз пока что как это будет работать, но при выключеном серве не пашет)
+  };
   return (
     <Modal
       show={isAuthModalShow}
@@ -65,7 +72,62 @@ export const AuthModal = (props) => {
         ></CloseButton>
       </ModalHeader>
       <ModalBody>
-        <div>
+        <Form
+          onSubmit={onSubmit}
+          validate={(values) => {
+            const errors = {};
+            if (!values.email) {
+              errors.email = "Required";
+            }
+            if (!values.password) {
+              errors.password = "Required";
+            }
+            return errors;
+          }}
+          render={({ handleSubmit, submitting }) => (
+            <form onSubmit={handleSubmit}>
+              <Field name="email">
+                {({ input, meta }) => (
+                  <div>
+                    <input
+                      {...input}
+                      type="text"
+                      placeholder="Enter ur e-mail"
+                    />
+                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                  </div>
+                )}
+              </Field>
+              <Field name="password">
+                {({ input, meta }) => (
+                  <div>
+                    <input
+                      {...input}
+                      type={passwordInputType}
+                      placeholder="Enter ur password"
+                    />
+                    <span>
+                      <button
+                        type="button"
+                        style={{ height: "30px" }}
+                        onClick={switchTypeOfInputPasswordField}
+                      >
+                        {showOrHidePassword()}
+                      </button>
+                    </span>
+                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                  </div>
+                )}
+              </Field>
+              <div className="buttons">
+                <Button type="submit" disabled={disableButtonThenSubmit}>
+                  LogIn
+                </Button>
+              </div>
+            </form>
+          )}
+        />
+        {/* <div>
           <input
             type={"text"}
             placeholder="Enter ur e-mail"
@@ -86,17 +148,8 @@ export const AuthModal = (props) => {
           >
             {showOrHidePassword()}
           </button>
-        </div>
+        </div> */}
       </ModalBody>
-      <ModalFooter>
-        <Button
-          onClick={() => {
-            props.logIn(email, password);
-          }}
-        >
-          LogIn
-        </Button>
-      </ModalFooter>
     </Modal>
   );
 };

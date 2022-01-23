@@ -8,7 +8,7 @@ export function Auth(props) {
     if (showAuthModal)
       return (
         <AuthModal
-          props={props}
+          logIn={props.logIn}
           showAuthModal={showAuthModalSyncWithAuthModal}
         />
       );
