@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 import { Field, Form } from "react-final-form";
 
 export const RegistrationForm = (props) => {
@@ -30,9 +31,13 @@ export const RegistrationForm = (props) => {
     }
   };
 
-  const onSubmit = (e) => {
-    alert(e);
+  const [disableButtonThenSubmit, setDisableButtonThenSubmit] = useState(false);
+  const onSubmit = async (e) => {
+    setDisableButtonThenSubmit(true);
+    await props.regUser(e.email, e.password);
+    setDisableButtonThenSubmit(false); // хз пока что как это будет работать, но при выключеном серве не пашет)
   };
+
   return (
     <Form
       onSubmit={onSubmit}
@@ -103,6 +108,11 @@ export const RegistrationForm = (props) => {
               );
             }}
           </Field>
+          <div className="buttons">
+            <Button type="submit" disabled={disableButtonThenSubmit}>
+              LogIn
+            </Button>
+          </div>
         </form>
       )}
     />

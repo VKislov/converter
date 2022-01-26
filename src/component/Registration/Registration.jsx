@@ -5,7 +5,7 @@ export const Registration = (props) => {
     <div className={style.wrapper}>
       <h2>Registration</h2>
       <div>
-        <RegistrationForm />
+        <RegistrationForm regUser={props.regUser} />
       </div>
     </div>
   );

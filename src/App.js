@@ -3,7 +3,7 @@ import style from "./App.module.css";
 import { ConverterContainer } from "./component/Converter/ConverterContainer";
 import { Footer } from "./component/Footer/Footer";
 import { Header } from "./component/Header/Header";
-import { Registration } from "./component/Registration/Registration";
+import { RegistrationContainer } from "./component/Registration/RegistrationContainer";
 
 function App(props) {
   return (
@@ -12,12 +12,10 @@ function App(props) {
         <Header />
       </div>
       <Routes>
+        <Route index element={<ConverterContainer />} />
         <Route path="Converter" element={<ConverterContainer />} />
-        <Route path="Registration" element={<Registration />} />
+        <Route path="Registration" element={<RegistrationContainer />} />
       </Routes>
-      {/* <div className={style.converter}>
-        <ConverterContainer />
-      </div> */}
       <div className={style.footer}>
         <Footer />
       </div>

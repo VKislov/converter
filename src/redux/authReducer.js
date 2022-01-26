@@ -1,6 +1,6 @@
-import { authAPI } from "../api/authAPI";
+import { userAPI } from "../api/userAPI";
 
-const initialState = { email: null, password: null, isAuth: false };
+const initialState = { isAuth: false };
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     default:
@@ -11,7 +11,13 @@ export const authReducer = (state = initialState, action) => {
 export const logIn = (email, password) => {
   const payload = { email, password };
   return async (dispatch) => {
-    await authAPI.logIn(payload).then((res) => res);
+    await userAPI.logIn(payload).then((res) => res);
   };
 };
 export const logOut = () => {};
+export const regUser = (email, password) => {
+  const payload = { email, password };
+  return async (dispatch) => {
+    await userAPI.regUser(payload).then((res) => res);
+  };
+};
