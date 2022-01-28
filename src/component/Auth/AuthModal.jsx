@@ -27,7 +27,14 @@ export const AuthModal = (props) => {
       <ModalBody>
         <AuthForm logIn={props.logIn} />
         <Link to={"Registration"}>
-          <p>Registration</p>
+          <p
+            onClick={() => {
+              setAuthModalShow(false);
+              props.showAuthModal();
+            }}
+          >
+            Registration
+          </p>
         </Link>
       </ModalBody>
     </Modal>

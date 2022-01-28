@@ -22,7 +22,11 @@ export class FileUploader extends React.Component {
     return (
       <div>
         <div className={style.withBox}>
-          <input type="file" onChange={this.onFileChange} />
+          <input
+            type="file"
+            onChange={this.onFileChange}
+            style={{ borderRadius: "8%" }}
+          />
         </div>
         <div className={style.ButtonWrapper}>
           <Button onClick={this.onFileUpload} className={style.Button}>

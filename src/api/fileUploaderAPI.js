@@ -6,7 +6,10 @@ export const fileUploaderAPI = {
       url: "http://94.137.242.252:7777/ImageConverter",
       data: formData,
       responseType: "blob",
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `${localStorage.getItem("token")}`,
+      },
     });
   },
 };

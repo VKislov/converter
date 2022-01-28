@@ -1,15 +1,19 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import style from "./App.module.css";
 import { ConverterContainer } from "./component/Converter/ConverterContainer";
 import { Footer } from "./component/Footer/Footer";
-import { Header } from "./component/Header/Header";
+import { HeaderContainer } from "./component/Header/HeaderContainer";
 import { RegistrationContainer } from "./component/Registration/RegistrationContainer";
 
 function App(props) {
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) props.checkAuth();
+  // }, []);
   return (
     <div className={style.App}>
       <div className={style.header}>
-        <Header />
+        <HeaderContainer />
       </div>
       <Routes>
         <Route index element={<ConverterContainer />} />

@@ -110,7 +110,7 @@ export const RegistrationForm = (props) => {
           </Field>
           <div className="buttons">
             <Button type="submit" disabled={disableButtonThenSubmit}>
-              LogIn
+              Registration
             </Button>
           </div>
         </form>
