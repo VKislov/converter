@@ -37,7 +37,7 @@ const fileUploaderReducer = (state = initialState, action) => {
       return stateCopy;
     }
     default: {
-      return { ...state };
+      return state;
     }
   }
 };

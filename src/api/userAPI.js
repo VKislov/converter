@@ -1,19 +1,14 @@
 import axios from "axios";
-export const userAPI = {
-  logIn: (payload) => {
-    return axios({
-      method: "post",
-      data: payload,
-      url: "http://94.137.242.252:7777/cock",
-      withCredentials: true,
-    });
-  },
-  regUser: (payload) => {
-    return axios({
-      method: "post",
-      data: payload,
-      url: "http://94.137.242.252:7777/dick",
-      withCredentials: true,
-    });
+export const API_URL = `http://94.137.242.252:7777`;
+const api = axios.create({ withCredentials: false, baseURL: API_URL });
+api.interceptors.request.use((config) => {
+  config.headers.Authorization = `${localStorage.getItem("token")}`;
+  return config;
+});
+const userAPI = {
+  getImageHistoryList: () => {
+    return;
   },
 };
+
+export default api;
