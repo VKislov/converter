@@ -1,28 +1,27 @@
+import { useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
-import { ItemListGroup } from "../ExtensionChanger/ItemListGroup/ItemListGroup";
+import { ImageHistoryListItem } from "./ImageHistoryListItem";
+import style from "./ImageHistoryList.module.css";
 
 export function ImageHistoryList(props) {
-  const mapImageLink = () => {
-    if (props.extensionsFromServer !== null) {
-      return props.extensionsFromServer.map((ext) => (
-        <ItemListGroup extension={ext} />
+  useEffect(() => {
+    if (props.imageListArr === null) props.getImageHistoryList();
+  });
+  const mapImageLinkItem = () => {
+    if (props.imageListArr !== null) {
+      return props.imageListArr.map((imageListItem) => (
+        <ImageHistoryListItem
+          imageListItem={imageListItem}
+          getImageById={props.getImageById}
+          URLImageById={props.URLImageById}
+        />
       ));
     }
   };
-
   return (
-    <div>
-      <style type="text/css">
-        {`
-          .item{
-              text-align: left;
-          }
-            .item:hover{
-                background-color:azure;
-            }
-            `}
-      </style>
-      <ListGroup as="ul">{mapImageLink()}</ListGroup>
+    <div className={style.stretchDiv}>
+      <h3>History</h3>
+      <ListGroup as="ul">{mapImageLinkItem()}</ListGroup>
     </div>
   );
 }

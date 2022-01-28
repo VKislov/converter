@@ -5,9 +5,15 @@ api.interceptors.request.use((config) => {
   config.headers.Authorization = `${localStorage.getItem("token")}`;
   return config;
 });
-const userAPI = {
+export const userAPI = {
   getImageHistoryList: () => {
-    return;
+    return api.get("/api/ConvertedImages/Get/GetImagesId");
+  },
+  getImageById: (id) => {
+    return api.get("/api/ConvertedImages/Get/GetImageById", {
+      params: { imageId: id },
+      responseType: "blob",
+    });
   },
 };
 

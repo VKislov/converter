@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ListGroupItem } from "react-bootstrap";
 
-export function ItemListGroup(props) {
+export function ImageHistoryListItem(props) {
+  const [convertedImageName, setConvertedImageName] = useState(null);
+  const Downloader = (URLImageById) => {
+    if (URLImageById !== null && convertedImageName !== null) {
+      const link = document.createElement("a");
+      link.href = URLImageById;
+      link.download = convertedImageName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+  const getImageById = () => {
+    props.getImageById(props.imageListItem.id);
+    setConvertedImageName(props.imageListItem.convertedImageName);
+  };
+  useEffect(() => {
+    if (props.URLImageById !== null) Downloader(props.URLImageById);
+    return setConvertedImageName(null);
+  });
   return (
     <div>
       <style type="text/css">
@@ -14,12 +33,11 @@ export function ItemListGroup(props) {
             }
         `}
       </style>
-      <a href={props.link} download={props.convertedImageName}>
-        <ListGroupItem as="li" className="item">
-          <div>{props.fromImageName}</div>
-          <div>{props.convertedImageName}</div>
-        </ListGroupItem>
-      </a>
+
+      <ListGroupItem as="li" className="item" onClick={getImageById}>
+        <div>From: {props.imageListItem.fromImageName}</div>
+        <div>To: {props.imageListItem.convertedImageName}</div>
+      </ListGroupItem>
     </div>
   );
 }

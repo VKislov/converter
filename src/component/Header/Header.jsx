@@ -30,7 +30,7 @@ export const Header = (props) => {
           </NavbarBrand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="History">History</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
           <span style={{ textAlign: "right" }}>{Auth()}</span>

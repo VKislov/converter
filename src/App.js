@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import style from "./App.module.css";
 import { ConverterContainer } from "./component/Converter/ConverterContainer";
+import { ImageHistoryListContainer } from "./component/Converter/ImageHistory/ImageHistoryListContainer";
 import { Footer } from "./component/Footer/Footer";
 import { HeaderContainer } from "./component/Header/HeaderContainer";
 import { RegistrationContainer } from "./component/Registration/RegistrationContainer";
@@ -19,6 +20,7 @@ function App(props) {
         <Route index element={<ConverterContainer />} />
         <Route path="Converter" element={<ConverterContainer />} />
         <Route path="Registration" element={<RegistrationContainer />} />
+        <Route path="History" element={<ImageHistoryListContainer />} />
       </Routes>
       <div className={style.footer}>
         <Footer />
