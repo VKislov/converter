@@ -1,7 +1,6 @@
 import { Container, Nav, Navbar, NavbarBrand } from "react-bootstrap";
 import { AuthContainer } from "../Auth/AuthContainer";
 import { LogOutContainer } from "../Auth/LogOut/LogOutContainer";
-import { ModalMessageNotAuthorized } from "../Converter/ImageHistory/ModalMessageNotAuthorized";
 import style from "./Header.module.css";
 export const Header = (props) => {
   const Auth = () => {
