@@ -1,6 +1,7 @@
 import { Container, Nav, Navbar, NavbarBrand } from "react-bootstrap";
 import { AuthContainer } from "../Auth/AuthContainer";
 import { LogOutContainer } from "../Auth/LogOut/LogOutContainer";
+import { ModalMessageNotAuthorized } from "../Converter/ImageHistory/ModalMessageNotAuthorized";
 import style from "./Header.module.css";
 export const Header = (props) => {
   const Auth = () => {
@@ -10,6 +11,7 @@ export const Header = (props) => {
       return <AuthContainer />;
     }
   };
+
   return (
     <div className={style.header}>
       <Navbar bg="dark" variant="dark">
@@ -33,6 +35,7 @@ export const Header = (props) => {
             <Nav.Link href="History">History</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
+
           <span style={{ textAlign: "right" }}>{Auth()}</span>
         </Container>
       </Navbar>

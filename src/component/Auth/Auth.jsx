@@ -10,6 +10,8 @@ export function Auth(props) {
         <AuthModal
           logIn={props.logIn}
           showAuthModal={showAuthModalSyncWithAuthModal}
+          setBedReqAC={props.setBedReqAC}
+          bedReq={props.bedReq}
         />
       );
   };

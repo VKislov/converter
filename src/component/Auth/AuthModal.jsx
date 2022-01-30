@@ -6,6 +6,10 @@ import { AuthForm } from "./AuthForm";
 
 export const AuthModal = (props) => {
   const [isAuthModalShow, setAuthModalShow] = useState(true);
+  const toggleShowModal = () => {
+    setAuthModalShow(false);
+    props.showAuthModal();
+  };
   return (
     <Modal
       show={isAuthModalShow}
@@ -25,16 +29,14 @@ export const AuthModal = (props) => {
         ></CloseButton>
       </ModalHeader>
       <ModalBody>
-        <AuthForm logIn={props.logIn} />
+        <AuthForm
+          logIn={props.logIn}
+          toggleShowModal={toggleShowModal}
+          setBedReqAC={props.setBedReqAC}
+          bedReq={props.bedReq}
+        />
         <Link to={"Registration"}>
-          <p
-            onClick={() => {
-              setAuthModalShow(false);
-              props.showAuthModal();
-            }}
-          >
-            Registration
-          </p>
+          <p onClick={toggleShowModal}>Registration</p>
         </Link>
       </ModalBody>
     </Modal>

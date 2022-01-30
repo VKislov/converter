@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import style from "./App.module.css";
 import { ConverterContainer } from "./component/Converter/ConverterContainer";
 import { ImageHistoryListContainer } from "./component/Converter/ImageHistory/ImageHistoryListContainer";
+import { ModalMessageNotAuthorized } from "./component/Converter/ImageHistory/ModalMessageNotAuthorized";
 import { Footer } from "./component/Footer/Footer";
 import { HeaderContainer } from "./component/Header/HeaderContainer";
 import { RegistrationContainer } from "./component/Registration/RegistrationContainer";
@@ -21,6 +22,14 @@ function App(props) {
         <Route path="Converter" element={<ConverterContainer />} />
         <Route path="Registration" element={<RegistrationContainer />} />
         <Route path="History" element={<ImageHistoryListContainer />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
       </Routes>
       <div className={style.footer}>
         <Footer />

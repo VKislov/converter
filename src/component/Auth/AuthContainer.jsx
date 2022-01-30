@@ -1,10 +1,13 @@
 import { connect } from "react-redux";
-import { logIn } from "../../redux/authReducer";
+import { logIn, setBedReqAC } from "../../redux/authReducer";
 import { Auth } from "./Auth";
 const mapStateToProps = (state) => {
-  return {};
+  return { bedReq: state.authReducer.bedReq };
 };
 const mapDispatchToProps = (dispatch) => {
-  return { logIn: (email, password) => dispatch(logIn(email, password)) };
+  return {
+    logIn: (email, password) => dispatch(logIn(email, password)),
+    setBedReqAC: () => dispatch(setBedReqAC(null)),
+  };
 };
 export const AuthContainer = connect(mapStateToProps, mapDispatchToProps)(Auth);

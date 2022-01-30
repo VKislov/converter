@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Field, Form } from "react-final-form";
+import { Navigate } from "react-router-dom";
 
 export const RegistrationForm = (props) => {
   const [passwordInputType, setPasswordInputType] = useState("password");
+  const [navigate, setNavigate] = useState(false);
+  const nav = () => {
+    if (navigate) {
+      return <Navigate to={"/"} />;
+    }
+  };
   const switchTypeOfInputPasswordField = () => {
     if (passwordInputType === "password") {
       setPasswordInputType("text");
@@ -35,9 +42,9 @@ export const RegistrationForm = (props) => {
   const onSubmit = async (e) => {
     setDisableButtonThenSubmit(true);
     await props.regUser(e.email, e.password);
-    setDisableButtonThenSubmit(false); // хз пока что как это будет работать, но при выключеном серве не пашет)
+    setDisableButtonThenSubmit(false);
+    setNavigate(props.bedReq !== null);
   };
-
   return (
     <Form
       onSubmit={onSubmit}
@@ -45,6 +52,10 @@ export const RegistrationForm = (props) => {
         const errors = {};
         if (!values.email) {
           errors.email = "Required";
+        }
+        if (props.bedReq) {
+          // bedReq это когда по одному логину регаешься повторно, приходит 400 ошибка просто нет времени подумать как её адекватно назвать)
+          errors.email = props.bedReq;
         }
         if (!values.password) {
           errors.password = "Required";
@@ -61,6 +72,9 @@ export const RegistrationForm = (props) => {
         <form onSubmit={handleSubmit} style={{ textAlign: "left" }}>
           <Field name="email">
             {({ input, meta }) => {
+              if (meta.modifiedSinceLastSubmit) {
+                props.setBedReqAC(null);
+              }
               return (
                 <div>
                   <input
@@ -112,6 +126,7 @@ export const RegistrationForm = (props) => {
             <Button type="submit" disabled={disableButtonThenSubmit}>
               Registration
             </Button>
+            {nav()}
           </div>
         </form>
       )}

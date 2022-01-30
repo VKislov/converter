@@ -35,7 +35,8 @@ export const AuthForm = (props) => {
   const onSubmit = async (e) => {
     setDisableButtonThenSubmit(true);
     await props.logIn(e.email, e.password);
-    setDisableButtonThenSubmit(false); // хз пока что как это будет работать, но при выключеном серве не пашет)
+    setDisableButtonThenSubmit(false);
+    if (props.bedReq !== null) props.toggleShowModal();
   };
   return (
     <Form
@@ -48,38 +49,52 @@ export const AuthForm = (props) => {
         if (!values.password) {
           errors.password = "Required";
         }
+        if (props.bedReq) {
+          // bedReq это когда по одному логину регаешься повторно, приходит 400 ошибка просто нет времени подумать как её адекватно назвать)
+          errors.email = props.bedReq;
+        }
         return errors;
       }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <Field name="email">
-            {({ input, meta }) => (
-              <div>
-                <input {...input} type="text" placeholder="Enter ur e-mail" />
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            )}
+            {({ input, meta }) => {
+              if (meta.modifiedSinceLastSubmit) {
+                props.setBedReqAC(null);
+              }
+              return (
+                <div>
+                  <input {...input} type="text" placeholder="Enter ur e-mail" />
+                  {meta.error && meta.touched && <span>{meta.error}</span>}
+                </div>
+              );
+            }}
           </Field>
           <Field name="password">
-            {({ input, meta }) => (
-              <div>
-                <input
-                  {...input}
-                  type={passwordInputType}
-                  placeholder="Enter ur password"
-                />
-                <span>
-                  <button
-                    type="button"
-                    style={{ height: "30px" }}
-                    onClick={switchTypeOfInputPasswordField}
-                  >
-                    {showOrHidePassword()}
-                  </button>
-                </span>
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            )}
+            {({ input, meta }) => {
+              if (meta.modifiedSinceLastSubmit) {
+                props.setBedReqAC(null);
+              }
+              return (
+                <div>
+                  <input
+                    {...input}
+                    type={passwordInputType}
+                    placeholder="Enter ur password"
+                  />
+                  <span>
+                    <button
+                      type="button"
+                      style={{ height: "30px" }}
+                      onClick={switchTypeOfInputPasswordField}
+                    >
+                      {showOrHidePassword()}
+                    </button>
+                  </span>
+                  {meta.error && meta.touched && <span>{meta.error}</span>}
+                </div>
+              );
+            }}
           </Field>
           <div className="buttons">
             <Button type="submit" disabled={disableButtonThenSubmit}>

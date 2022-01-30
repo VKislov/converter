@@ -5,7 +5,11 @@ export const Registration = (props) => {
     <div className={style.wrapper}>
       <h2>Registration</h2>
       <div>
-        <RegistrationForm regUser={props.regUser} />
+        <RegistrationForm
+          regUser={props.regUser}
+          bedReq={props.bedReq}
+          setBedReqAC={props.setBedReqAC}
+        />
       </div>
     </div>
   );

@@ -7,8 +7,8 @@ export class FileUploader extends React.Component {
     this.props.onFileChange(event.target.files[0]);
     this.props.setImageIsGet();
   };
-  onFileUpload = () => {
-    this.props.sendImageToServerTC(
+  onFileUpload = async () => {
+    await this.props.sendImageToServerTC(
       this.props.imageFile,
       this.props.extensionTo
     );
@@ -29,7 +29,11 @@ export class FileUploader extends React.Component {
           />
         </div>
         <div className={style.ButtonWrapper}>
-          <Button onClick={this.onFileUpload} className={style.Button}>
+          <Button
+            onClick={this.onFileUpload}
+            className={style.Button}
+            disabled={this.props.uploadButtonDisable}
+          >
             Upload!
           </Button>
         </div>

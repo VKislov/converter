@@ -11,6 +11,7 @@ export function ImageHistoryListItem(props) {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      setConvertedImageName(null);
     }
   };
   const getImageById = () => {
@@ -19,7 +20,6 @@ export function ImageHistoryListItem(props) {
   };
   useEffect(() => {
     if (props.URLImageById !== null) Downloader(props.URLImageById);
-    return setConvertedImageName(null);
   });
   return (
     <div>
