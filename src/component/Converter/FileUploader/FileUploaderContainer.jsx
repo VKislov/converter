@@ -13,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     imageIsGet: ownProps.imageIsGet,
     imageFile: state.fileUploaderReducer.imageFile,
     extensionTo: state.fileUploaderReducer.extensionTo,
+    uploadButtonDisable: state.fileUploaderReducer.uploadButtonDisable,
   };
 };
 const mapDispatchToProps = (dispatch) => ({

@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import style from "./Converter.module.css";
 import { ExtensionChangerContainer } from "./ExtensionChanger/ExtensionChangerContainer";
 import { FileUploaderContainer } from "./FileUploader/FileUploaderContainer";
@@ -40,7 +41,7 @@ export class Converter extends React.Component {
     if (this.props.convertedFile) {
       return (
         <a href={this.props.convertedFile} download>
-          <button>download</button>
+          <Button>download</Button>
         </a>
       );
     }

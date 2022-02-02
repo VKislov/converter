@@ -1,0 +1,6 @@
+.wrapper {
+  margin-top: 20px;
+  margin-left: 45%;
+  text-align: left;
+  height: calc(100vh - 100px);
+}

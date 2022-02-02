@@ -18,14 +18,15 @@ export class ItemListGroup extends React.Component {
             }
             `}
         </style>
-
-        <ListGroup.Item
-          as="li"
-          onClick={this.onExtensionChange}
-          className="item"
-        >
-          {this.props.extension}
-        </ListGroup.Item>
+        <ListGroup as="ul">
+          <ListGroup.Item
+            as="li"
+            onClick={this.onExtensionChange}
+            className="item"
+          >
+            {this.props.extension}
+          </ListGroup.Item>
+        </ListGroup>
       </div>
     );
   }
