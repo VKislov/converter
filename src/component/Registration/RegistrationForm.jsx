@@ -37,7 +37,6 @@ export const RegistrationForm = (props) => {
       );
     }
   };
-
   const [disableButtonThenSubmit, setDisableButtonThenSubmit] = useState(false);
   const onSubmit = async (e) => {
     setDisableButtonThenSubmit(true);
@@ -54,7 +53,6 @@ export const RegistrationForm = (props) => {
           errors.email = "Required";
         }
         if (props.bedReq) {
-          // bedReq это когда по одному логину регаешься повторно, приходит 400 ошибка просто нет времени подумать как её адекватно назвать)
           errors.email = props.bedReq;
         }
         if (!values.password) {

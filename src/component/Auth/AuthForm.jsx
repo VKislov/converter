@@ -50,7 +50,6 @@ export const AuthForm = (props) => {
           errors.password = "Required";
         }
         if (props.bedReq) {
-          // bedReq это когда по одному логину регаешься повторно, приходит 400 ошибка просто нет времени подумать как её адекватно назвать)
           errors.email = props.bedReq;
         }
         return errors;
