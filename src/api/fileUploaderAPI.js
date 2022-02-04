@@ -1,15 +1,12 @@
-import axios from "axios";
+import api from "./userAPI";
 export const fileUploaderAPI = {
   sendImageToServer: (formData) => {
-    return axios({
-      method: "post",
-      url: "http://94.137.242.252:7777/ImageConverter",
-      data: formData,
-      responseType: "blob",
+    return api.post("ImageConverter", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: `${localStorage.getItem("token")}`,
       },
+      responseType: "blob",
     });
   },
 };
