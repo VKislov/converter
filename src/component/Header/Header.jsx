@@ -27,12 +27,11 @@ export const Header = (props) => {
                 paddingRight: "5px",
               }}
             ></img>
-            GeyBoyConverter
+            GachiBoyConverter
           </NavbarBrand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="History">History</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
 
           <span style={{ textAlign: "right" }}>{Auth()}</span>
