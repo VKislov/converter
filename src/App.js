@@ -1,9 +1,7 @@
-import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import style from "./App.module.css";
 import { ConverterContainer } from "./component/Converter/ConverterContainer";
 import { ImageHistoryListContainer } from "./component/Converter/ImageHistory/ImageHistoryListContainer";
-import { ModalMessageNotAuthorized } from "./component/Converter/ImageHistory/ModalMessageNotAuthorized";
 import { Footer } from "./component/Footer/Footer";
 import { HeaderContainer } from "./component/Header/HeaderContainer";
 import { RegistrationContainer } from "./component/Registration/RegistrationContainer";
