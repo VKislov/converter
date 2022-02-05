@@ -17,6 +17,7 @@ export class ExtensionChanger extends React.Component {
     if (this.props.extensionsFromServer !== null) {
       return this.props.extensionsFromServer.map((ext) => (
         <ItemListGroup
+          key={ext}
           extension={ext}
           onExtensionChange={this.onExtensionChange}
         />

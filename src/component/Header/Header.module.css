@@ -4,3 +4,11 @@
   -moz-box-shadow: 0px 14px 18px -6px rgba(34, 60, 80, 0.72);
   box-shadow: 0px 14px 18px -6px rgba(34, 60, 80, 0.72);
 }
+.navLink {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
