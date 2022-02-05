@@ -7,9 +7,6 @@ import { HeaderContainer } from "./component/Header/HeaderContainer";
 import { RegistrationContainer } from "./component/Registration/RegistrationContainer";
 
 function App(props) {
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) props.checkAuth();
-  // }, []);
   return (
     <div className={style.App}>
       <div className={style.header}>

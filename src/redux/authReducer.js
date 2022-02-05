@@ -1,5 +1,4 @@
-import axios from "axios";
-import api, { API_URL } from "../api/userAPI";
+import api from "../api/userAPI";
 const SET_IS_AUTH = "SET-IS-AUTH";
 const LOG_OUT = "LOG-OUT";
 const SET_BED_REQ = "SET-BED-REQ";
@@ -61,14 +60,5 @@ export const regUser = (email, password) => {
     } catch (e) {
       dispatch(setBedReqAC(e.response.data.message));
     }
-  };
-};
-export const checkAuth = (email, password) => {
-  return async (dispatch) => {
-    const response = await axios.get(`${API_URL}/refresh`, {
-      withCredentials: true,
-    });
-    localStorage.setItem("token", response.data.token);
-    dispatch(setIsAuthAC(true));
   };
 };
