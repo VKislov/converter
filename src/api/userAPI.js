@@ -1,5 +1,5 @@
 import axios from "axios";
-export const API_URL = `http://webapi.u1589542.plsk.regruhosting.ru`;
+export const API_URL = `https://api.gachiboyconverter.site`;
 const api = axios.create({ withCredentials: false, baseURL: API_URL });
 api.interceptors.request.use((config) => {
   config.headers.Authorization = `${localStorage.getItem("token")}`;
