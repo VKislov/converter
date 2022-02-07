@@ -6,6 +6,7 @@ const ON_FILE_UPLOAD = "ON-FILE-UPLOAD";
 const CHANGE_EXTENSION_IN_STORE = "CHANGE-EXTENSION-IN-STORE";
 const LOAD_EXT = "LOAD-EXT";
 const UPLOAD_BUTTON_DISABLE = "UPLOAD-BUTTON-DISABLE";
+const SET_IMAGE_FILE_NAME = "SET-IMAGE-FILE-NAME";
 
 let initialState = {
   imageFile: null,
@@ -14,6 +15,7 @@ let initialState = {
   URLconvertedFile: null,
   extensionsFromServer: null,
   uploadButtonDisable: true,
+  imageFileName: null,
 };
 
 const fileUploaderReducer = (state = initialState, action) => {
@@ -42,6 +44,13 @@ const fileUploaderReducer = (state = initialState, action) => {
     case UPLOAD_BUTTON_DISABLE: {
       let stateCopy = { ...state };
       stateCopy.uploadButtonDisable = action.boolean;
+      return stateCopy;
+    }
+    case SET_IMAGE_FILE_NAME: {
+      let stateCopy = { ...state };
+      stateCopy.imageFileName = `${stateCopy.imageFile.name.split(".")[0]}.${
+        stateCopy.extensionTo
+      }`;
       return stateCopy;
     }
     default: {
@@ -79,6 +88,7 @@ export const sendImageToServerTC = (imageFile, extensionTo) => {
         let URLconvertedFile = URL.createObjectURL(response.data);
         return URLconvertedFile;
       });
+    dispatch(setImageFileNameAC());
     dispatch(uploadButtonDisablerAC(false));
     dispatch(onFileUploadAC(URLconvertedFile));
   };
@@ -90,3 +100,7 @@ export const getExtFromServerTC = () => {
     dispatch(loadExtAC(extArr));
   };
 };
+
+const setImageFileNameAC = () => ({
+  type: SET_IMAGE_FILE_NAME,
+});

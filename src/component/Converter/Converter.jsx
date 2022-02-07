@@ -40,7 +40,7 @@ export class Converter extends React.Component {
   downloadImage = () => {
     if (this.props.convertedFile) {
       return (
-        <a href={this.props.convertedFile} download>
+        <a href={this.props.convertedFile} download={this.props.imageFileName}>
           <Button>download</Button>
         </a>
       );

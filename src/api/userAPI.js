@@ -1,10 +1,4 @@
-import axios from "axios";
-export const API_URL = `https://api.gachiboyconverter.site`;
-const api = axios.create({ withCredentials: false, baseURL: API_URL });
-api.interceptors.request.use((config) => {
-  config.headers.Authorization = `${localStorage.getItem("token")}`;
-  return config;
-});
+import { api } from "./api";
 export const userAPI = {
   getImageHistoryList: () => {
     return api.get("/api/ConvertedImages/Get/GetImagesId");
