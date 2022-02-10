@@ -1,4 +1,5 @@
-import api from "../api/userAPI";
+import { api } from "../api/api";
+
 const SET_IS_AUTH = "SET-IS-AUTH";
 const LOG_OUT = "LOG-OUT";
 const SET_BED_REQ = "SET-BED-REQ";
