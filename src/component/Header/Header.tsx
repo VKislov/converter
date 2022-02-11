@@ -1,11 +1,18 @@
+import { FC } from "react";
 import { Container, Nav, Navbar, NavbarBrand } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContainer } from "../Auth/AuthContainer";
 import { LogOutContainer } from "../Auth/LogOut/LogOutContainer";
 import style from "./Header.module.css";
-export const Header = (props) => {
+
+interface IHeaderProps{
+  isAuth: string
+}
+
+export const Header: FC<IHeaderProps> = ({isAuth}) => {
+  
   const Auth = () => {
-    if (localStorage.getItem("token") !== null) {
+    if (isAuth !== null) {
       return <LogOutContainer />;
     } else {
       return <AuthContainer />;

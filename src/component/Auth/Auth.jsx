@@ -9,19 +9,19 @@ export function Auth(props) {
       return (
         <AuthModal
           logIn={props.logIn}
-          showAuthModal={showAuthModalSyncWithAuthModal}
+          showAuthModal={showAuthModalSyncWithAuthModalComponent}
           setBedReqAC={props.setBedReqAC}
           bedReq={props.bedReq}
         />
       );
   };
-  const showAuthModalSyncWithAuthModal = () => {
+  const showAuthModalSyncWithAuthModalComponent = () => {
     setShowAuthModal(!showAuthModal);
   };
   return (
     <>
       {authModal()}
-      <Button onClick={showAuthModalSyncWithAuthModal}>Auth</Button>
+      <Button onClick={showAuthModalSyncWithAuthModalComponent}>Auth</Button>
     </>
   );
 }

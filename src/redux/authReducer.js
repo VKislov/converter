@@ -3,7 +3,7 @@ import { api } from "../api/api";
 const SET_IS_AUTH = "SET-IS-AUTH";
 const LOG_OUT = "LOG-OUT";
 const SET_BED_REQ = "SET-BED-REQ";
-const initialState = { bedReq: null };
+const initialState = { bedReq: null, isAuth: localStorage.getItem("token") };
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_IS_AUTH: {
@@ -15,8 +15,8 @@ export const authReducer = (state = initialState, action) => {
     }
     case LOG_OUT: {
       let stateCopy = { ...state };
-      stateCopy.isAuth = false;
       localStorage.removeItem("token");
+      stateCopy.isAuth = localStorage.getItem("token");
       return stateCopy;
     }
     case SET_BED_REQ: {
@@ -56,7 +56,7 @@ export const regUser = (email, password) => {
         email,
         password,
       });
-      dispatch(setBedReqAC(null));
+      dispatch(setBedReqAC(localStorage.getItem("token")));
       localStorage.setItem("token", response.data.token);
     } catch (e) {
       dispatch(setBedReqAC(e.response.data.message));
