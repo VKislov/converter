@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
+    isAuth: state.authReducer.isAuth,
     URLImageById: state.imageHistoryReducer.URLImageById,
     imageListArr: state.imageHistoryReducer.imageListArr,
   };

@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { CloseButton, Modal, ModalBody, ModalTitle } from "react-bootstrap";
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
 import { Link } from "react-router-dom";
 import { AuthForm } from "./AuthForm";
+import { AuthModalProps } from "./interface";
 
-export const AuthModal = (props) => {
-  const [isAuthModalShow, setAuthModalShow] = useState(true);
+export const AuthModal:FC<AuthModalProps> = ({bedReq,logIn,showAuthModal,setBedReqAC}) => {
+  const [isAuthModalShow, setAuthModalShow] = useState<boolean>(true);
   const toggleShowModal = () => {
     setAuthModalShow(false);
-    props.showAuthModal();
+    showAuthModal();
   };
   return (
     <Modal
@@ -24,16 +25,16 @@ export const AuthModal = (props) => {
         <CloseButton
           onClick={() => {
             setAuthModalShow(false);
-            props.showAuthModal();
+            showAuthModal();
           }}
         ></CloseButton>
       </ModalHeader>
       <ModalBody>
         <AuthForm
-          logIn={props.logIn}
+          logIn={logIn}
           toggleShowModal={toggleShowModal}
-          setBedReqAC={props.setBedReqAC}
-          bedReq={props.bedReq}
+          setBedReqAC={setBedReqAC}
+          bedReq={bedReq}
         />
         <Link to={"Registration"}>
           <p onClick={toggleShowModal}>Registration</p>

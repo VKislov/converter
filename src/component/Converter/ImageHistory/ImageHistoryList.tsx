@@ -1,23 +1,25 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Alert, ListGroup } from "react-bootstrap";
 import { ImageHistoryListItem } from "./ImageHistoryListItem";
 import style from "./ImageHistoryList.module.css";
 import { Navigate } from "react-router-dom";
+import { IImageHistoryList, IImageListItem } from "./interface";
 
-export function ImageHistoryList(props) {
-  const [showAlertNotAuth, setShowAlertNotAuth] = useState(false);
-  const [isMessageShow, setIsMessageShow] = useState(false);
-  const [navToHome, setNavToHome] = useState(false);
+export const ImageHistoryList: FC<IImageHistoryList> = 
+({getImageById, getImageHistoryList, imageListArr,URLImageById})=>{
+  const [showAlertNotAuth, setShowAlertNotAuth] = useState<boolean>(false);
+  const [isMessageShow, setIsMessageShow] = useState<boolean>(false);
+  const [navToHome, setNavToHome] = useState<boolean>(false);
   useEffect(() => {
-    if (props.imageListArr === null) props.getImageHistoryList();
+    if (imageListArr === null) getImageHistoryList();
   });
   const mapImageLinkItem = () => {
-    if (props.imageListArr !== null) {
-      return props.imageListArr.map((imageListItem) => (
+    if (imageListArr !== null) {
+      return imageListArr.map((imageListItem:IImageListItem) => (
         <ImageHistoryListItem
           imageListItem={imageListItem}
-          getImageById={props.getImageById}
-          URLImageById={props.URLImageById}
+          getImageByID={getImageById}
+          URLImageById={URLImageById}
         />
       ));
     }

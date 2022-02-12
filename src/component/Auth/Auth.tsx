@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Button } from "react-bootstrap";
 import { AuthModal } from "./AuthModal";
+import { IAuth } from "./interface";
 
-export function Auth(props) {
-  const [showAuthModal, setShowAuthModal] = useState(false);
+
+export const Auth:FC<IAuth> = ({logIn, setBedReqAC, bedReq})=> {
+  const [showAuthModal, setShowAuthModal] = useState<boolean>(false);
   const authModal = () => {
     if (showAuthModal)
       return (
         <AuthModal
-          logIn={props.logIn}
+          logIn={logIn}
           showAuthModal={showAuthModalSyncWithAuthModalComponent}
-          setBedReqAC={props.setBedReqAC}
-          bedReq={props.bedReq}
+          setBedReqAC={setBedReqAC}
+          bedReq={bedReq}
         />
       );
   };

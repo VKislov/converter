@@ -1,9 +1,13 @@
-import { useState } from "react";
+
+import { FC, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Field, Form } from "react-final-form";
+import { IAuthFormProps, IErrors, IValues} from "./interface";
 
-export const AuthForm = (props) => {
-  const [passwordInputType, setPasswordInputType] = useState("password");
+
+
+export const AuthForm: FC<IAuthFormProps> = ({logIn,bedReq,toggleShowModal,setBedReqAC}) => {
+  const [passwordInputType, setPasswordInputType] = useState<string>("password");
   const switchTypeOfInputPasswordField = () => {
     if (passwordInputType === "password") {
       setPasswordInputType("text");
@@ -31,26 +35,26 @@ export const AuthForm = (props) => {
     }
   };
 
-  const [disableButtonThenSubmit, setDisableButtonThenSubmit] = useState(false);
-  const onSubmit = async (e) => {
+  const [disableButtonThenSubmit, setDisableButtonThenSubmit] = useState<boolean>(false);
+  const onSubmit = async (e: any) => {
     setDisableButtonThenSubmit(true);
-    await props.logIn(e.email, e.password);
+    await logIn(e.email, e.password);
     setDisableButtonThenSubmit(false);
-    if (props.bedReq !== null) props.toggleShowModal();
+    if (bedReq !== null) toggleShowModal();
   };
   return (
     <Form
       onSubmit={onSubmit}
-      validate={(values) => {
-        const errors = {};
+      validate={(values:IValues) => {
+        const errors:IErrors = {};
         if (!values.email) {
           errors.email = "Required";
         }
         if (!values.password) {
           errors.password = "Required";
         }
-        if (props.bedReq) {
-          errors.email = props.bedReq;
+        if (bedReq) {
+          errors.email = bedReq;
         }
         return errors;
       }}
@@ -59,7 +63,7 @@ export const AuthForm = (props) => {
           <Field name="email">
             {({ input, meta }) => {
               if (meta.modifiedSinceLastSubmit) {
-                props.setBedReqAC(null);
+                setBedReqAC(null);
               }
               return (
                 <div>
@@ -72,7 +76,7 @@ export const AuthForm = (props) => {
           <Field name="password">
             {({ input, meta }) => {
               if (meta.modifiedSinceLastSubmit) {
-                props.setBedReqAC(null);
+                setBedReqAC(null);
               }
               return (
                 <div>

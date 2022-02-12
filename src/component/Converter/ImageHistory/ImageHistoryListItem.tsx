@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ListGroupItem } from "react-bootstrap";
+import { IImageHistoryListItem} from "./interface";
 
-export function ImageHistoryListItem(props) {
-  const [convertedImageName, setConvertedImageName] = useState(null);
-  const Downloader = (URLImageById) => {
+export const ImageHistoryListItem: FC<IImageHistoryListItem> = ({URLImageById,getImageByID,imageListItem,}) =>{
+  const [convertedImageName, setConvertedImageName] = useState<string|null>(null)
+  const Downloader = (URLImageById:string) => {
     if (URLImageById !== null && convertedImageName !== null) {
       const link = document.createElement("a");
       link.href = URLImageById;
@@ -15,11 +16,11 @@ export function ImageHistoryListItem(props) {
     }
   };
   const getImageById = () => {
-    props.getImageById(props.imageListItem.id);
-    setConvertedImageName(props.imageListItem.convertedImageName);
+    getImageByID(imageListItem.id);
+    setConvertedImageName(imageListItem.convertedImageName);
   };
   useEffect(() => {
-    if (props.URLImageById !== null) Downloader(props.URLImageById);
+    if (URLImageById !== null) Downloader(URLImageById);
   });
   return (
     <div>
@@ -35,8 +36,8 @@ export function ImageHistoryListItem(props) {
       </style>
 
       <ListGroupItem as="li" className="item" onClick={getImageById}>
-        <div>From: {props.imageListItem.fromImageName}</div>
-        <div>To: {props.imageListItem.convertedImageName}</div>
+        <div>From: {imageListItem.fromImageName}</div>
+        <div>To: {imageListItem.convertedImageName}</div>
       </ListGroupItem>
     </div>
   );
