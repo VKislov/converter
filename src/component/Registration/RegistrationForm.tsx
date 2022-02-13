@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Field, Form } from "react-final-form";
 import { Navigate } from "react-router-dom";
+import { IErrors, IRegistrationFormProps, IValues } from "./interfaces";
 
-export const RegistrationForm = (props) => {
-  const [passwordInputType, setPasswordInputType] = useState("password");
-  const [navigate, setNavigate] = useState(false);
+export const RegistrationForm:FC<IRegistrationFormProps> = ({regUser,bedReq,setBedReqAC}) => {
+  const [passwordInputType, setPasswordInputType] = useState<string>("password");
+  const [navigate, setNavigate] = useState<boolean>(false);
   const nav = () => {
     if (navigate) {
       return <Navigate to={"/"} />;
@@ -37,23 +38,23 @@ export const RegistrationForm = (props) => {
       );
     }
   };
-  const [disableButtonThenSubmit, setDisableButtonThenSubmit] = useState(false);
-  const onSubmit = async (e) => {
+  const [disableButtonThenSubmit, setDisableButtonThenSubmit] = useState<boolean>(false);
+  const onSubmit = async (e:any) => {
     setDisableButtonThenSubmit(true);
-    await props.regUser(e.email, e.password);
+    await regUser(e.email, e.password);
     setDisableButtonThenSubmit(false);
-    setNavigate(props.bedReq !== null);
+    setNavigate(bedReq !== null);
   };
   return (
     <Form
       onSubmit={onSubmit}
-      validate={(values) => {
-        const errors = {};
+      validate={(values:IValues) => {
+        const errors:IErrors = {};
         if (!values.email) {
           errors.email = "Required";
         }
-        if (props.bedReq) {
-          errors.email = props.bedReq;
+        if (bedReq) {
+          errors.email = bedReq;
         }
         if (!values.password) {
           errors.password = "Required";
@@ -71,7 +72,7 @@ export const RegistrationForm = (props) => {
           <Field name="email">
             {({ input, meta }) => {
               if (meta.modifiedSinceLastSubmit) {
-                props.setBedReqAC(null);
+                setBedReqAC();
               }
               return (
                 <div>

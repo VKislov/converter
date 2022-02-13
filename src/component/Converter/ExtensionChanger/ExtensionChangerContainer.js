@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import {
   changeExtensionInStoreAC,
   getExtFromServerTC,
-} from "../../../redux/fileUploaderReducer";
+} from "../../../redux/fileUploaderReducer/fileUploaderReducer";
 
 import { ExtensionChanger } from "./ExtensionChanger";
 const mapStateToProps = (state) => {

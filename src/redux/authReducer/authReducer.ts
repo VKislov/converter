@@ -1,25 +1,24 @@
-import { api } from "../api/api";
+import { api } from '../../api/api';
+import { IAuthReducerState, AuthActionTypes, TAuthReducerActions} from './interface/index';
 
 const SET_IS_AUTH = "SET-IS-AUTH";
 const LOG_OUT = "LOG-OUT";
 const SET_BED_REQ = "SET-BED-REQ";
-const initialState = { bedReq: null, isAuth: localStorage.getItem("token") };
-export const authReducer = (state = initialState, action) => {
+const initialState:IAuthReducerState = { bedReq: null, isAuth: localStorage.getItem("token") };
+export const authReducer = (state = initialState, action:TAuthReducerActions):IAuthReducerState=> {
   switch (action.type) {
-    case SET_IS_AUTH: {
-      let stateCopy = { ...state };
-      if (localStorage.getItem("token") !== null) {
+    case AuthActionTypes.SET_IS_AUTH: {
+      let stateCopy:IAuthReducerState = { ...state };
         stateCopy.isAuth = action.isAuth;
-      }
       return stateCopy;
     }
-    case LOG_OUT: {
+    case AuthActionTypes.LOG_OUT: {
       let stateCopy = { ...state };
       localStorage.removeItem("token");
-      stateCopy.isAuth = localStorage.getItem("token");
+      stateCopy.isAuth = null;
       return stateCopy;
     }
-    case SET_BED_REQ: {
+    case AuthActionTypes.SET_BED_REQ: {
       let stateCopy = { ...state };
       stateCopy.bedReq = action.bedReq;
       return stateCopy;
@@ -28,29 +27,29 @@ export const authReducer = (state = initialState, action) => {
       return state;
   }
 };
-export const setIsAuthAC = (isAuth) => ({ type: SET_IS_AUTH, isAuth: isAuth });
-export const setBedReqAC = (errorMessage) => ({
+export const setIsAuthAC= (isAuth:string|null) => ({ type: SET_IS_AUTH, isAuth });
+export const setBedReqAC = (errorMessage:string|null) => ({
   type: SET_BED_REQ,
   bedReq: errorMessage,
 });
 
 export const logOut = () => ({ type: LOG_OUT });
-export const logIn = (email, password) => {
-  return async (dispatch) => {
+export const logIn = (email:string, password:string) => {
+  return async (dispatch:any) => {
     try {
       let response = await api.post("Authenticate/authenticate", {
         email,
         password,
       });
       localStorage.setItem("token", response.data.token);
-      dispatch(setIsAuthAC(true));
-    } catch (e) {
+      dispatch(setIsAuthAC(localStorage.getItem("token")));
+    } catch (e:any) {
       dispatch(setBedReqAC(e.response.data.message));
     }
   };
 };
-export const regUser = (email, password) => {
-  return async (dispatch) => {
+export const regUser = (email:string, password:string) => {
+  return async (dispatch:any) => {
     try {
       let response = await api.post("Authenticate/register", {
         email,
@@ -58,7 +57,7 @@ export const regUser = (email, password) => {
       });
       dispatch(setBedReqAC(localStorage.getItem("token")));
       localStorage.setItem("token", response.data.token);
-    } catch (e) {
+    } catch (e:any) {
       dispatch(setBedReqAC(e.response.data.message));
     }
   };

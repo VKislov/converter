@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import {
   getImageById,
   getImageHistoryList,
-} from "../../../redux/imageHistoryReducer";
+} from "../../../redux/imageHistoryReducer/imageHistoryReducer";
 import { ImageHistoryList } from "./ImageHistoryList";
 const mapDispatchToProps = (dispatch) => {
   return {

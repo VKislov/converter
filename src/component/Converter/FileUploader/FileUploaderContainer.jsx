@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import {
   onFileChangeAC,
   sendImageToServerTC,
-} from "../../../redux/fileUploaderReducer";
+} from "../../../redux/fileUploaderReducer/fileUploaderReducer";
 
 import { FileUploader } from "./FileUploader";
 

@@ -1,16 +1,17 @@
-import { userAPI } from "../api/userAPI";
+import { userAPI } from "../../api/userAPI";
+import { imageHistoryAE, imageHistoryReducerState, TImageHistoryA } from "./interface";
 
 const LOAD_IMAGE_HISTORY = "LOAD-IMAGE-HISTORY";
 const LOAD_IMAGE_BY_ID = "LOAD-IMAGE-BY-ID";
-const initialState = { imageListArr: null, URLImageById: null };
-export const imageHistoryReducer = (state = initialState, action) => {
+const initialState:imageHistoryReducerState = { imageListArr: null, URLImageById: null };
+export const imageHistoryReducer = (state = initialState, action:TImageHistoryA):imageHistoryReducerState => {
   switch (action.type) {
-    case LOAD_IMAGE_HISTORY: {
+    case imageHistoryAE.LOAD_IMAGE_HISTORY: {
       let stateCopy = { ...state };
       stateCopy.imageListArr = action.imageListArr;
       return stateCopy;
     }
-    case LOAD_IMAGE_BY_ID: {
+    case imageHistoryAE.LOAD_IMAGE_BY_ID: {
       let stateCopy = { ...state };
       stateCopy.URLImageById = action.URLImageById;
       return stateCopy;
@@ -20,16 +21,16 @@ export const imageHistoryReducer = (state = initialState, action) => {
     }
   }
 };
-export const getImageHistoryListAC = (imageListArr) => ({
+export const getImageHistoryListAC = (imageListArr:string[]) => ({
   type: LOAD_IMAGE_HISTORY,
   imageListArr,
 });
-export const getImageByIdAC = (URLImageById) => ({
+export const getImageByIdAC = (URLImageById:string) => ({
   type: LOAD_IMAGE_BY_ID,
   URLImageById,
 });
-export const getImageById = (id) => {
-  return async (dispatch) => {
+export const getImageById = (id:number) => {
+  return async (dispatch:any) => {
     let URLImageById = await userAPI.getImageById(id).then((resp) => {
       return URL.createObjectURL(resp.data);
     });
@@ -37,7 +38,7 @@ export const getImageById = (id) => {
   };
 };
 export const getImageHistoryList = () => {
-  return async (dispatch) => {
+  return async (dispatch:any) => {
     let imageListArr = await userAPI
       .getImageHistoryList()
       .then((resp) => resp.data);
