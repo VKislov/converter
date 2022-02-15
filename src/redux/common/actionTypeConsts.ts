@@ -1,0 +1,18 @@
+
+export const authReducerConsts = {
+    SET_IS_AUTH : "SET-IS-AUTH",
+    LOG_OUT : "LOG-OUT",
+    SET_BED_REQ : "SET-BED-REQ",
+}
+export const fileUploaderReducerConsts = {
+    ON_FILE_CHANGE : "ON-FILE-CHANGE",
+    ON_FILE_UPLOAD : "ON-FILE-UPLOAD",
+    CHANGE_EXTENSION_IN_STORE : "CHANGE-EXTENSION-IN-STORE",
+    LOAD_EXT : "LOAD-EXT",
+    UPLOAD_BUTTON_DISABLE : "UPLOAD-BUTTON-DISABLE",
+    SET_IMAGE_FILE_NAME : "SET-IMAGE-FILE-NAME",
+}
+export const imageHistoryReducerConsts = {
+    LOAD_IMAGE_HISTORY : "LOAD-IMAGE-HISTORY",
+    LOAD_IMAGE_BY_ID : "LOAD-IMAGE-BY-ID",
+}

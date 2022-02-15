@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import {
-  getImageById,
+  getImageByIdAC,
   getImageHistoryList,
-} from "../../../redux/imageHistoryReducer/imageHistoryReducer";
+} from "../../../redux/imageHistoryReducer/imageHistoryActions";
 import { ImageHistoryList } from "./ImageHistoryList";
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -10,7 +10,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(getImageHistoryList());
     },
     getImageById: (id) => {
-      dispatch(getImageById(id));
+      dispatch(getImageByIdAC(id));
     },
   };
 };

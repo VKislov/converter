@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import App from "./App";
-import { loadExtAC } from "./redux/fileUploaderReducer/fileUploaderReducer";
+import { loadExtAC } from "./redux/fileUploaderReducer/fileUploaderActions";
 const mapStateToProps = (state) => {
   return {};
 };

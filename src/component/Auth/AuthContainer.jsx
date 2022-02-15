@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { logIn, setBedReqAC } from "../../redux/authReducer/authReducer";
+import { logIn, setBedReqAC } from "../../redux/authReducer/authActions";
 import { Auth } from "./Auth";
 const mapStateToProps = (state) => {
   return { bedReq: state.authReducer.bedReq };
