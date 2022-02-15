@@ -1,4 +1,6 @@
+import { Dispatch } from 'redux';
 import { api } from '../../api/api';
+import { IAction } from '../interface';
 import { IAuthReducerState, AuthActionTypes, TAuthReducerActions} from './interface/index';
 
 const SET_IS_AUTH = "SET-IS-AUTH";
@@ -35,7 +37,7 @@ export const setBedReqAC = (errorMessage:string|null) => ({
 
 export const logOut = () => ({ type: LOG_OUT });
 export const logIn = (email:string, password:string) => {
-  return async (dispatch:any) => {
+  return async (dispatch:Dispatch<IAction>) => {
     try {
       let response = await api.post("Authenticate/authenticate", {
         email,
@@ -49,7 +51,7 @@ export const logIn = (email:string, password:string) => {
   };
 };
 export const regUser = (email:string, password:string) => {
-  return async (dispatch:any) => {
+  return async (dispatch:Dispatch<IAction>) => {
     try {
       let response = await api.post("Authenticate/register", {
         email,

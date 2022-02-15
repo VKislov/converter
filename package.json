@@ -4,6 +4,7 @@
   "homepage": "https://u1589542.plsk.regruhosting.ru/",
   "private": true,
   "dependencies": {
+    "@redux-devtools/extension": "^3.2.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",

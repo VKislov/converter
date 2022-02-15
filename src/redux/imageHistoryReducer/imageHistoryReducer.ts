@@ -1,4 +1,6 @@
+import { Dispatch } from "redux";
 import { userAPI } from "../../api/userAPI";
+import { IAction } from "../interface";
 import { imageHistoryAE, imageHistoryReducerState, TImageHistoryA } from "./interface";
 
 const LOAD_IMAGE_HISTORY = "LOAD-IMAGE-HISTORY";
@@ -30,7 +32,7 @@ export const getImageByIdAC = (URLImageById:string) => ({
   URLImageById,
 });
 export const getImageById = (id:number) => {
-  return async (dispatch:any) => {
+  return async (dispatch:Dispatch<IAction>) => {
     let URLImageById = await userAPI.getImageById(id).then((resp) => {
       return URL.createObjectURL(resp.data);
     });
@@ -38,7 +40,7 @@ export const getImageById = (id:number) => {
   };
 };
 export const getImageHistoryList = () => {
-  return async (dispatch:any) => {
+  return async (dispatch:Dispatch<IAction>) => {
     let imageListArr = await userAPI
       .getImageHistoryList()
       .then((resp) => resp.data);

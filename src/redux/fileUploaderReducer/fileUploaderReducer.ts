@@ -1,5 +1,7 @@
+import { Dispatch } from "redux";
 import { fileUploaderAPI } from "../../api/fileUploaderAPI";
 import { initialAPI } from "../../api/initialAPI";
+import { IAction } from "../interface";
 import { TFileUploaderA, IImageHistoryReducerState, fileUploaderAE } from "./interface/index";
 const ON_FILE_CHANGE = "ON-FILE-CHANGE";
 const ON_FILE_UPLOAD = "ON-FILE-UPLOAD";
@@ -80,7 +82,7 @@ const uploadButtonDisablerAC = (boolean:boolean) => ({
   boolean,
 });
 export const sendImageToServerTC = (imageFile:File, extensionTo:string) => {
-  return async (dispatch:any) => {
+  return async (dispatch:Dispatch<IAction>) => {
     let formData = new FormData();
     formData.append("ImageFile", imageFile);
     formData.append("ExtensionTo", extensionTo);
@@ -98,7 +100,7 @@ export const sendImageToServerTC = (imageFile:File, extensionTo:string) => {
 };
 
 export const getExtFromServerTC = () => {
-  return async (dispatch:any) => {
+  return async (dispatch:Dispatch<IAction>) => {
     let extArr = await initialAPI.initialExt().then((resp) => resp.data);
     dispatch(loadExtAC(extArr));
   };

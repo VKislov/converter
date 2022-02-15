@@ -21,3 +21,4 @@ interface SET_BED_REQ {
 }
 
 export type TAuthReducerActions = SET_IS_AUTH|LOG_OUT|SET_BED_REQ
+
