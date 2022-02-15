@@ -3,19 +3,19 @@ import style from "./App.module.css";
 import { ConverterContainer } from "./component/Converter/ConverterContainer";
 import { ImageHistoryListContainer } from "./component/Converter/ImageHistory/ImageHistoryListContainer";
 import { Footer } from "./component/Footer/Footer";
-import { HeaderContainer } from "./component/Header/HeaderContainer";
-import { RegistrationContainer } from "./component/Registration/RegistrationContainer";
+import { Header } from "./component/Header/Header";
+import { Registration } from "./component/Registration/Registration";
 
-function App(props) {
+function App() {
   return (
     <div className={style.App}>
       <div className={style.header}>
-        <HeaderContainer />
+        <Header />
       </div>
       <Routes>
         <Route index element={<ConverterContainer />} />
         <Route path="Converter" element={<ConverterContainer />} />
-        <Route path="Registration" element={<RegistrationContainer />} />
+        <Route path="Registration" element={<Registration />} />
         <Route path="History" element={<ImageHistoryListContainer />} />
         <Route
           path="*"

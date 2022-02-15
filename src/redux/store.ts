@@ -1,3 +1,4 @@
+
 import { composeWithDevTools } from "@redux-devtools/extension";
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from "redux-thunk";
@@ -14,5 +15,5 @@ const reducers = combineReducers({
 let store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 export { store };
 
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof reducers>
 export type AppDispatch = typeof store.dispatch

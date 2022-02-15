@@ -1,7 +1,7 @@
 // AuthForm
 export interface IAuth {
-    logIn:()=>void
-    setBedReqAC:()=>void
+    logIn:(email:string,password:string)=>void
+    setBedReqAC:(a:null)=>void
     bedReq: string|null
 }
 export interface IAuthFormProps {
@@ -22,7 +22,7 @@ export interface IValues{
 // AuthModal
 export interface AuthModalProps{
     showAuthModal():void
-    logIn():void
-    setBedReqAC():void
+    logIn(email:string,password:string):void
+    setBedReqAC(a:null):void
     bedReq:string| null
 }

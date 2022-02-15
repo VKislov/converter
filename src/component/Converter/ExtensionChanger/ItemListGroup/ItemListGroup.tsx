@@ -1,12 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import { ListGroup } from "react-bootstrap";
+import { IItemListGroupProps } from "./interface";
 
-export class ItemListGroup extends React.Component {
-  onExtensionChange = () => {
-    this.props.onExtensionChange(this.props.extension);
+export const ItemListGroup: FC<IItemListGroupProps> = ({extension,onExtensionChange})=>{
+
+  const changeExtensionOnClick = () => {
+    onExtensionChange(extension);
   };
-  render() {
-    return (
+  return (
       <div>
         <style type="text/css">
           {`
@@ -21,13 +22,13 @@ export class ItemListGroup extends React.Component {
         <ListGroup as="ul">
           <ListGroup.Item
             as="li"
-            onClick={this.onExtensionChange}
+            onClick={changeExtensionOnClick}
             className="item"
           >
-            {this.props.extension}
+            {extension}
           </ListGroup.Item>
         </ListGroup>
       </div>
     );
   }
-}
+

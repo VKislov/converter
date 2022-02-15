@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import style from "./Converter.module.css";
-import { ExtensionChangerContainer } from "./ExtensionChanger/ExtensionChangerContainer";
+import { ExtensionChanger } from "./ExtensionChanger/ExtensionChanger";
 import { FileUploaderContainer } from "./FileUploader/FileUploaderContainer";
 import { PreviewerImageContainer } from "./PreviewerImage/PreviewerImageContainer";
 export class Converter extends React.Component {
@@ -63,7 +63,7 @@ export class Converter extends React.Component {
           {this.imageIsGet()}
         </div>
         <div style={{ margin: "10px" }}>
-          <ExtensionChangerContainer />
+          <ExtensionChanger />
         </div>
       </div>
     );

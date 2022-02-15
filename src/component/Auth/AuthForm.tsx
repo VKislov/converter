@@ -62,7 +62,7 @@ export const AuthForm: FC<IAuthFormProps> = ({logIn,bedReq,toggleShowModal,setBe
           <Field name="email">
             {({ input, meta }) => {
               if (meta.modifiedSinceLastSubmit) {
-                setBedReqAC(null);
+                setBedReqAC(null)
               }
               return (
                 <div>
@@ -75,7 +75,7 @@ export const AuthForm: FC<IAuthFormProps> = ({logIn,bedReq,toggleShowModal,setBe
           <Field name="password">
             {({ input, meta }) => {
               if (meta.modifiedSinceLastSubmit) {
-                setBedReqAC(null);
+                setBedReqAC(null)
               }
               return (
                 <div>

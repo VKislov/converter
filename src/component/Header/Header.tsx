@@ -1,19 +1,17 @@
 import { FC } from "react";
 import { Container, Nav, Navbar, NavbarBrand } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks/useAppSelector";
+import { Auth } from "../Auth/Auth";
 import { AuthContainer } from "../Auth/AuthContainer";
-import { LogOutContainer } from "../Auth/LogOut/LogOutContainer";
+import { LogOut } from "../Auth/LogOut/LogOut";
 import style from "./Header.module.css";
 
-interface IHeaderProps{
-  isAuth: string
-}
-
-export const Header: FC<IHeaderProps> = ({isAuth}) => {
-  
-  const Auth = () => {
+export const Header: FC = () => {
+  const {isAuth} = useAppSelector(state=>state.authReducer)
+  const AuthRender = () => {
     if (isAuth !== null) {
-      return <LogOutContainer />;
+      return <LogOut />;
     } else {
       return <AuthContainer />;
     }
@@ -46,7 +44,7 @@ export const Header: FC<IHeaderProps> = ({isAuth}) => {
             </Link>
           </Nav>
 
-          <span style={{ textAlign: "right" }}>{Auth()}</span>
+          <span style={{ textAlign: "right" }}>{AuthRender()}</span>
         </Container>
       </Navbar>
     </div>

@@ -2,9 +2,13 @@ import { FC, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Field, Form } from "react-final-form";
 import { Navigate } from "react-router-dom";
-import { IErrors, IRegistrationFormProps, IValues } from "./interfaces";
+import { useAppSelector } from "../../redux/hooks/useAppSelector";
+import { useAuthActions } from "../../redux/hooks/useAuthActions";
+import { IErrors,  IValues } from "./interfaces";
 
-export const RegistrationForm:FC<IRegistrationFormProps> = ({regUser,bedReq,setBedReqAC}) => {
+export const RegistrationForm:FC = () => {
+  const {bedReq}= useAppSelector(state=>state.authReducer)
+  const {regUser,setBedReqAC}=useAuthActions()
   const [passwordInputType, setPasswordInputType] = useState<string>("password");
   const [navigate, setNavigate] = useState<boolean>(false);
   const nav = () => {
@@ -72,7 +76,7 @@ export const RegistrationForm:FC<IRegistrationFormProps> = ({regUser,bedReq,setB
           <Field name="email">
             {({ input, meta }) => {
               if (meta.modifiedSinceLastSubmit) {
-                setBedReqAC();
+                setBedReqAC(null);
               }
               return (
                 <div>
