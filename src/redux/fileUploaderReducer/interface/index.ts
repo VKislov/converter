@@ -18,7 +18,7 @@ export enum fileUploaderAE{
 }
 interface ON_FILE_CHANGE {
     type:fileUploaderAE.ON_FILE_CHANGE
-    imageFile:null|File
+    imageFile:File
 }
 interface ON_FILE_UPLOAD{
     type:fileUploaderAE.ON_FILE_UPLOAD
